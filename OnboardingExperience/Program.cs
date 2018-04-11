@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OnboardingExperience
@@ -19,7 +20,7 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm first name: {newUser.FirstName} ? (y/n)");
 
-                isConfirmed = ConfirmData(Console.ReadLine());
+                isConfirmed = ConfirmData();
             } while (!isConfirmed);
 
             do
@@ -29,7 +30,7 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm last name: {newUser.LastName} ? (y/n)");
 
-                isConfirmed = ConfirmData(Console.ReadLine());
+                isConfirmed = ConfirmData();
             } while (!isConfirmed);
 
 
@@ -40,25 +41,31 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm Pin: {newUser.Pin} ? (y/n)");
 
-                isConfirmed = ConfirmData(Console.ReadLine());
+                isConfirmed = ConfirmData();
             } while (!isConfirmed);
         }
 
-        private static bool ConfirmData(string a)
+        private static bool ConfirmData()
         {
-            if (a.ToLower() == "y")
+            do
             {
-                return true;
-            }
-            else if (a.ToLower() == "n")
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Please enter either a 'y' for Yes, or a 'n' for No.");
-                return false;
-            }
+                var answer = Console.ReadLine();
+
+                if (answer.ToLower() == "y")
+                {
+                    return true;
+                }
+                else if (answer.ToLower() == "n")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter either a 'y' for Yes, or a 'n' for No.");
+
+                }
+            } while (true);
+            
         }
     }
 }
