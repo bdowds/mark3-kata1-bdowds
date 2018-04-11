@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace OnboardingExperience
 {
@@ -13,7 +14,7 @@ namespace OnboardingExperience
 
             do
             {
-                Console.WriteLine("Please enter your first name");
+                Console.WriteLine("\nPlease enter your first name:");
                 newUser.FirstName = Console.ReadLine();
 
                 Console.WriteLine($"Confirm first name: {newUser.FirstName} ? (y/n)");
@@ -23,7 +24,7 @@ namespace OnboardingExperience
 
             do
             {
-                Console.WriteLine("Great! Please enter your last name");
+                Console.WriteLine("\nPlease enter your last name:");
                 newUser.LastName = Console.ReadLine();
 
                 Console.WriteLine($"Confirm last name: {newUser.LastName} ? (y/n)");
@@ -31,9 +32,18 @@ namespace OnboardingExperience
                 yesOrNo = Console.ReadLine().ToLower();
             } while (yesOrNo == "n");
 
-            Console.WriteLine("Great!");
 
-            Console.ReadLine();
+            do
+            {
+                Console.WriteLine("\nPlease enter a 4-digit pin:");
+                newUser.Pin = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"Confirm Pin: {newUser.Pin} ? (y/n)");
+
+                yesOrNo = Console.ReadLine().ToLower();
+            } while (yesOrNo == "n");
+            
+
             
 
         }
