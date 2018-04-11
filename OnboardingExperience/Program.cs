@@ -21,8 +21,21 @@ namespace OnboardingExperience
                 yesOrNo = Console.ReadLine().ToLower();
             } while (yesOrNo == "n");
 
+            do
+            {
+                Console.WriteLine("Great! Please enter your last name");
+                newUser.LastName = Console.ReadLine();
+
+                Console.WriteLine($"Confirm last name: {newUser.LastName} ? (y/n)");
+
+                yesOrNo = Console.ReadLine().ToLower();
+            } while (yesOrNo == "n");
+
             Console.WriteLine("Great!");
+
             Console.ReadLine();
+            
+
         }
     }
 }
