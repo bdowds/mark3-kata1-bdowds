@@ -12,6 +12,8 @@ namespace OnboardingExperience
 
             var newUser = new User();
             var isConfirmed = false;
+            var isUserName = false;
+            var isPin = false;
 
             do
             {
@@ -43,12 +45,21 @@ namespace OnboardingExperience
 
             } while (!isConfirmed);
 
-            Console.WriteLine("Account has been created successfully!");
+            Console.WriteLine("\nAccount has been created successfully!");
+            Console.WriteLine("\nPlease Login");
 
-            /*do
+            do
             {
-                Console.WriteLine("\nPlease Login");
-            }*/
+                isUserName = (AskQuestion("\nUser Name:", 'S').ToString() == newUser.UserName);
+                isPin = ((int)AskQuestion("\nPin:", 'I') == newUser.Pin);
+
+                var confirmMessage = (isUserName && isPin) ? $"\nLogin Successful!\nWelcome {newUser.FirstName} {newUser.LastName}!" : "\nUsername or Password incorrect!";
+                Console.WriteLine(confirmMessage);
+
+            } while (isUserName == false || isPin == false);
+
+            Console.WriteLine("\nPress Enter to continue");
+            Console.ReadLine();
         }
 
         private static bool ConfirmData()
@@ -82,13 +93,14 @@ namespace OnboardingExperience
                     return Console.ReadLine();
                 case 'I':
                     {               
-                        question = question.Replace(" (not a 4 digit number)", "");
+                        question = question.Replace(" (must be a 4 digit number)", "");
                         var input = Console.ReadLine();
                         isInt = int.TryParse(input, out int value);
-                        return (isInt && input.Length == 4) ? value : AskQuestion(question + " (not a 4 digit number)", returnType);
-                    }                    
+                        return (isInt && input.Length == 4) ? value : AskQuestion(question + " (must be a 4 digit number)", returnType);
+                    }
+                default:
+                    return "This will never run";
             }
-            return "Test";
         }
     }
 }
