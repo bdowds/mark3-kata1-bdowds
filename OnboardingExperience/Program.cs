@@ -72,9 +72,11 @@ namespace OnboardingExperience
                 case 'S':
                     return Console.ReadLine();
                 case 'I':
-                    {
-                        isInt = int.TryParse(Console.ReadLine(), out int value);
-                        return (isInt) ? value : AskQuestion(question, returnType);
+                    {               
+                        question = question.Replace("(not a number)", "");
+                        var input = Console.ReadLine();
+                        isInt = int.TryParse(input, out int value);
+                        return (isInt && input.Length == 4) ? value : AskQuestion(question + "(not a 4 digit number)", returnType);
                     }
                     
             }
