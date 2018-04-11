@@ -10,7 +10,7 @@ namespace OnboardingExperience
             Console.WriteLine("Welcome to 'Banking App'!");
 
             var newUser = new User();
-            var yesOrNo = "y";
+            var isConfirmed = false;
 
             do
             {
@@ -19,8 +19,8 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm first name: {newUser.FirstName} ? (y/n)");
 
-                yesOrNo = Console.ReadLine().ToLower();
-            } while (yesOrNo == "n");
+                isConfirmed = ConfirmData(Console.ReadLine());
+            } while (!isConfirmed);
 
             do
             {
@@ -29,8 +29,8 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm last name: {newUser.LastName} ? (y/n)");
 
-                yesOrNo = Console.ReadLine().ToLower();
-            } while (yesOrNo == "n");
+                isConfirmed = ConfirmData(Console.ReadLine());
+            } while (!isConfirmed);
 
 
             do
@@ -40,12 +40,25 @@ namespace OnboardingExperience
 
                 Console.WriteLine($"Confirm Pin: {newUser.Pin} ? (y/n)");
 
-                yesOrNo = Console.ReadLine().ToLower();
-            } while (yesOrNo == "n");
-            
+                isConfirmed = ConfirmData(Console.ReadLine());
+            } while (!isConfirmed);
+        }
 
-            
-
+        private static bool ConfirmData(string a)
+        {
+            if (a.ToLower() == "y")
+            {
+                return true;
+            }
+            else if (a.ToLower() == "n")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Please enter either a 'y' for Yes, or a 'n' for No.");
+                return false;
+            }
         }
     }
 }
