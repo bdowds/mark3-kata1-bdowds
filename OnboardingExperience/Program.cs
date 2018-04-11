@@ -24,15 +24,31 @@ namespace OnboardingExperience
 
             } while (!isConfirmed);
 
+            do
+            {
+                newUser.UserName = AskQuestion("Please enter a user name:", 'S').ToString();
+                Console.WriteLine($"Would you like your user name to be: '{newUser.UserName}' ? (y/n)");
 
+                isConfirmed = ConfirmData();
+                Console.Clear();
+
+            } while (!isConfirmed);
             do
             {
                 newUser.Pin = (int)AskQuestion("Please enter a 4-digit pin:", 'I');
-
-                Console.WriteLine($"Confirm Pin: {newUser.Pin} ? (y/n)");
+                Console.WriteLine($"Would you like your pin to be: '{newUser.Pin}' ? (y/n)");
 
                 isConfirmed = ConfirmData();
+                Console.Clear();
+
             } while (!isConfirmed);
+
+            Console.WriteLine("Account has been created successfully!");
+
+            /*do
+            {
+                Console.WriteLine("\nPlease Login");
+            }*/
         }
 
         private static bool ConfirmData()
@@ -59,7 +75,7 @@ namespace OnboardingExperience
         private static object AskQuestion(string question, char returnType)
         {
             var isInt = false;
-            Console.WriteLine($"\n{question}");
+            Console.WriteLine(question);
             switch (returnType)
             {
                 case 'S':
