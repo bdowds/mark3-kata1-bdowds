@@ -15,20 +15,13 @@ namespace OnboardingExperience
 
             do
             {
-                newUser.FirstName = AskQuestion("Please enter your first name:", 'S').ToString();
-
-                Console.WriteLine($"Confirm first name: {newUser.FirstName} ? (y/n)");
-
-                isConfirmed = ConfirmData();
-            } while (!isConfirmed);
-
-            do
-            {              
+                newUser.FirstName = AskQuestion("Please enter your first name:", 'S').ToString();         
                 newUser.LastName = AskQuestion("Please enter your last name:", 'S').ToString();
-
-                Console.WriteLine($"Confirm last name: {newUser.LastName} ? (y/n)");
+                Console.WriteLine($"Is your name correct? (y/n): {newUser.FirstName} {newUser.LastName}");
 
                 isConfirmed = ConfirmData();
+                Console.Clear();
+
             } while (!isConfirmed);
 
 
@@ -73,12 +66,11 @@ namespace OnboardingExperience
                     return Console.ReadLine();
                 case 'I':
                     {               
-                        question = question.Replace("(not a number)", "");
+                        question = question.Replace(" (not a 4 digit number)", "");
                         var input = Console.ReadLine();
                         isInt = int.TryParse(input, out int value);
-                        return (isInt && input.Length == 4) ? value : AskQuestion(question + "(not a 4 digit number)", returnType);
-                    }
-                    
+                        return (isInt && input.Length == 4) ? value : AskQuestion(question + " (not a 4 digit number)", returnType);
+                    }                    
             }
             return "Test";
         }
