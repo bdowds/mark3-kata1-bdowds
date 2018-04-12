@@ -65,10 +65,12 @@ namespace OnboardingExperience
                 isUserName = (AskQuestion("\nUsername:", 'S').ToString() == newUser.UserName);
                 isPin = ((int)AskQuestion("\nPin:", 'I') == newUser.Pin);
 
-                var confirmMessage = (isUserName && isPin) ? $"\nLogin Successful!\nWelcome {newUser.FirstName} {newUser.LastName}!" : "\nUsername or Password incorrect!";
+                newUser.IsAccountOwner = (isUserName == true && isPin == true);
+
+                var confirmMessage = (newUser.IsAccountOwner) ? $"\nLogin Successful!\nWelcome {newUser.FirstName} {newUser.LastName}!" : "\nUsername or Password incorrect!";
                 Console.WriteLine(confirmMessage);
 
-            } while (isUserName == false || isPin == false);
+            } while (!newUser.IsAccountOwner);
 
 
             //End of Code

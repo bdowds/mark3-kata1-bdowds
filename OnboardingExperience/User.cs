@@ -10,5 +10,6 @@ namespace OnboardingExperience
         public string LastName { get; set; }
         public string UserName { get; set; }
         public int Pin { get; set; }
+        public bool IsAccountOwner { get; set; }
     }
 }
