@@ -6,11 +6,11 @@ namespace OnboardingExperience
 {
     class User
     {
-        public static string FirstName { get; set; }
-        public static string LastName { get; set; }
-        public static string UserName { get; set; }
-        public static int Pin { get; set; }
-        public static bool IsAccountOwner { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public int Pin { get; set; }
+        public bool IsAccountOwner { get; set; }
 
         enum ReturnType { rStr, rInt };
         bool isConfirmed = false;

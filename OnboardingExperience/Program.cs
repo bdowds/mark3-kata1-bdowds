@@ -14,6 +14,10 @@ namespace OnboardingExperience
             //Creates a new instance of User class
             var newUser = new User();
 
+            var testUser = new User();
+
+            testUser.NamePrompt();
+
             //Calls three Methods to get: First and Last name, Username, and Pin from the user.
             newUser.NamePrompt();
             newUser.UsernamePrompt();
